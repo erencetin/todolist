@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		11347F032110BCC300F06609 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11347F022110BCC300F06609 /* CategoryViewController.swift */; };
-		1135F1EE20FE9F34008EC7B4 /* NoteItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1135F1EC20FE9F34008EC7B4 /* NoteItem.xcdatamodeld */; };
+		11682B312124C8610096B88C /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11682B302124C8610096B88C /* NoteItem.swift */; };
+		11682B332124C9250096B88C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11682B322124C9250096B88C /* Category.swift */; };
 		11BBA4B220E909660039649A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BBA4B120E909660039649A /* AppDelegate.swift */; };
 		11BBA4B420E909660039649A /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BBA4B320E909660039649A /* ToDoListViewController.swift */; };
 		11BBA4B720E909660039649A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11BBA4B520E909660039649A /* Main.storyboard */; };
 		11BBA4B920E909670039649A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11BBA4B820E909670039649A /* Assets.xcassets */; };
 		11BBA4BC20E909670039649A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11BBA4BA20E909670039649A /* LaunchScreen.storyboard */; };
-		11BBA4C720E909670039649A /* EasyShoppingListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BBA4C620E909670039649A /* EasyShoppingListTests.swift */; };
-		11D8A50621230B14005A5C0C /* SampleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D8A50521230B14005A5C0C /* SampleObject.swift */; };
+		11BBA4C720E909670039649A /* CategoryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BBA4C620E909670039649A /* CategoryViewControllerTests.swift */; };
 		9DACB90DDBB02BA591B41DD5 /* Pods_EasyShoppingList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4F3B4CBA5828064BBC41FB /* Pods_EasyShoppingList.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +32,8 @@
 /* Begin PBXFileReference section */
 		009AA5F4702E9F1FCB3D93EB /* Pods-EasyShoppingList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyShoppingList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyShoppingList/Pods-EasyShoppingList.debug.xcconfig"; sourceTree = "<group>"; };
 		11347F022110BCC300F06609 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		1135F1ED20FE9F34008EC7B4 /* NoteItem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoteItem.xcdatamodel; sourceTree = "<group>"; };
+		11682B302124C8610096B88C /* NoteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItem.swift; sourceTree = "<group>"; };
+		11682B322124C9250096B88C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		11BBA4AE20E909660039649A /* EasyShoppingList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyShoppingList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11BBA4B120E909660039649A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11BBA4B320E909660039649A /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
@@ -41,9 +42,8 @@
 		11BBA4BB20E909670039649A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11BBA4BD20E909670039649A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11BBA4C220E909670039649A /* EasyShoppingListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyShoppingListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		11BBA4C620E909670039649A /* EasyShoppingListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyShoppingListTests.swift; sourceTree = "<group>"; };
+		11BBA4C620E909670039649A /* CategoryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewControllerTests.swift; sourceTree = "<group>"; };
 		11BBA4C820E909670039649A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11D8A50521230B14005A5C0C /* SampleObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleObject.swift; sourceTree = "<group>"; };
 		DD4F3B4CBA5828064BBC41FB /* Pods_EasyShoppingList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyShoppingList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A0A142F35224CB8ED45BA3 /* Pods-EasyShoppingList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyShoppingList.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyShoppingList/Pods-EasyShoppingList.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,8 +70,8 @@
 		113A618B20F966B60032095F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1135F1EC20FE9F34008EC7B4 /* NoteItem.xcdatamodeld */,
-				11D8A50521230B14005A5C0C /* SampleObject.swift */,
+				11682B302124C8610096B88C /* NoteItem.swift */,
+				11682B322124C9250096B88C /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -138,7 +138,7 @@
 		11BBA4C520E909670039649A /* EasyShoppingListTests */ = {
 			isa = PBXGroup;
 			children = (
-				11BBA4C620E909670039649A /* EasyShoppingListTests.swift */,
+				11BBA4C620E909670039649A /* CategoryViewControllerTests.swift */,
 				11BBA4C820E909670039649A /* Info.plist */,
 			);
 			path = EasyShoppingListTests;
@@ -305,11 +305,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11682B312124C8610096B88C /* NoteItem.swift in Sources */,
 				11347F032110BCC300F06609 /* CategoryViewController.swift in Sources */,
 				11BBA4B420E909660039649A /* ToDoListViewController.swift in Sources */,
 				11BBA4B220E909660039649A /* AppDelegate.swift in Sources */,
-				1135F1EE20FE9F34008EC7B4 /* NoteItem.xcdatamodeld in Sources */,
-				11D8A50621230B14005A5C0C /* SampleObject.swift in Sources */,
+				11682B332124C9250096B88C /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11BBA4C720E909670039649A /* EasyShoppingListTests.swift in Sources */,
+				11BBA4C720E909670039649A /* CategoryViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,19 +578,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1135F1EC20FE9F34008EC7B4 /* NoteItem.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1135F1ED20FE9F34008EC7B4 /* NoteItem.xcdatamodel */,
-			);
-			currentVersion = 1135F1ED20FE9F34008EC7B4 /* NoteItem.xcdatamodel */;
-			path = NoteItem.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 11BBA4A620E909650039649A /* Project object */;
 }

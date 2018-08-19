@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 class ToDoListViewController: UITableViewController {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var itemArray = [NoteItems]()
+    var realm : Realm! 
+    var items : Results<NoteItem>!
     var selectedCategory:Category? {
         didSet{
             loadData();
@@ -18,34 +18,48 @@ class ToDoListViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        realm = try! Realm()
         loadData()
         
         
     }
     //MARK - Tableview delegate methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count;
+        return items?.count ?? 1;
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        cell.textLabel?.text = itemArray[indexPath.row].noteText;
-        cell.accessoryType = itemArray[indexPath.row].isComplete ? .checkmark : .none
+        if let item = items?[indexPath.row]{
+            cell.textLabel?.text = item.noteText;
+            cell.accessoryType = item.isCompleted ? .checkmark : .none
+        }
+        else {
+            cell.textLabel?.text = "No items added"
+        }
+        
         return cell;
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        itemArray[indexPath.row].isComplete = !itemArray[indexPath.row].isComplete
         let cell = tableView.cellForRow(at: indexPath)!
-        if cell.accessoryType == .checkmark {
-            cell.accessoryType = .none
+        cell.accessoryType = cell.accessoryType == .checkmark ? .none : .checkmark
+        do{
+            try realm.write {
+                if let currentItem = items?[indexPath.row]{
+                    currentItem.isCompleted = !currentItem.isCompleted
+                    self.tableView.reloadData()
+                }
+            }
         }
-        else{
-            cell.accessoryType = .checkmark
+        catch{
+            print("noteItem couldnt be updated. because of : \(error)");
         }
         
+        
+   
+        
         tableView.deselectRow(at: indexPath, animated: true)
-        saveItems()
+        
     }
     //MARK - Add new items
     @IBAction func btnAddNew(_ sender: UIBarButtonItem) {
@@ -54,19 +68,26 @@ class ToDoListViewController: UITableViewController {
         let alertAction = UIAlertAction(title: "Add Item", style: .default) { (action) in
             if txtAlert.text != nil && txtAlert.text != ""
             {
-                let newNoteItem = NoteItems(context: self.context.self)
-                newNoteItem.noteText = txtAlert.text!
-                newNoteItem.isComplete = false;
-                newNoteItem.category = self.selectedCategory;
-                self.itemArray.append(newNoteItem)
-                self.saveItems()
+                if let currentCategory = self.selectedCategory{
+                    do{
+                        
+                        try self.realm.write {
+                            let newNoteItem = NoteItem()
+                            newNoteItem.noteText = txtAlert.text!
+                            newNoteItem.isCompleted = false;
+                            newNoteItem.dateCreated = Date()
+                            currentCategory.noteItems.append(newNoteItem);
+                        }
+                    }
+                    catch{
+                        print("error during inserting new noteItem into the database error:\(error)")
+                    }
+                    
+                }
                 
+                self.loadData()
             }
-            
-            
         }
-        
-        
         alertController.addTextField { (alertTextField) in
             txtAlert = alertTextField;
             txtAlert.placeholder = "Create new item"
@@ -74,9 +95,12 @@ class ToDoListViewController: UITableViewController {
         alertController.addAction(alertAction);
         present(alertController, animated: true, completion: nil);
     }
-    func saveItems(){
+    //MARK: - Save and load items
+    func saveItems(noteItem : NoteItem){
         do{
-            try context.save()
+            try realm.write {
+                try realm.add(noteItem)
+            }
         }
         catch{
             print(error)
@@ -84,22 +108,9 @@ class ToDoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func loadData(view request: NSFetchRequest<NoteItems> = NoteItems.fetchRequest(), predicate: NSPredicate? = nil){
-        let categoryPredicate = NSPredicate(format: "category.name MATCHES %@", (selectedCategory?.name)!);
-        if let compoundPredictate =  predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate,compoundPredictate])
-            
-        }
-        else{
-            request.predicate = categoryPredicate
-        }
-        do{
-            
-            itemArray = try context.fetch(request);
-        }
-        catch{
-            print("There is an error when fetch data from db:  \(error)")
-        }
+    func loadData(){
+        let sortDescriptors = [SortDescriptor(keyPath: "isCompleted", ascending: false),SortDescriptor(keyPath: "dateCreated", ascending: true)]
+        items = selectedCategory?.noteItems.sorted(by: sortDescriptors)//.sorted(byKeyPath: "dateCreated", ascending: true)
         tableView.reloadData();
     }
     
@@ -120,11 +131,7 @@ extension ToDoListViewController:UISearchBarDelegate {
             
         }
         else{
-            let request : NSFetchRequest<NoteItems> =  NoteItems.fetchRequest()
-            
-            let predicate = NSPredicate(format: "noteText CONTAINS [cd] %@", searchText != nil ? searchText! : searchBar.text!)
-            request.sortDescriptors = [NSSortDescriptor(key: "noteText", ascending: true)]
-            loadData(view: request, predicate: predicate)
+            items = items?.filter("noteText CONTAINS[cd] %@",searchText).sorted(byKeyPath: "dateCreated",ascending: true)
             
         }
         self.tableView.reloadData()

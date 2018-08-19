@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ToDoListViewController.loadData():ToDoListViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "items[0]">
+            </PersistentString>
+            <PersistentString
+               value = "items.count">
+            </PersistentString>
+            <PersistentString
+               value = "items[0].noteText">
+            </PersistentString>
+            <PersistentString
+               value = "selectedCategory.noteItems.count">
+            </PersistentString>
+            <PersistentString
+               value = "selectedCategory.noteItems[1].noteText">
+            </PersistentString>
+            <PersistentString
+               value = "selectedCategory.noteItems">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ToDoListViewController.tableView(_:cellForRowAt:):ToDoListViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

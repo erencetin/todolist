@@ -1,0 +1,6 @@
+framework module Pods_EasyShoppingList {
+  umbrella header "Pods-EasyShoppingList-umbrella.h"
+
+  export *
+  module * { export * }
+}
